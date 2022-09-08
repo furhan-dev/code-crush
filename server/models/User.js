@@ -14,11 +14,41 @@ const userSchema = new Schema({
     required: true,
     trim: true,
   },
-  email: {
-    type: String,
+  age: {
+    type: Number,
     required: true,
     unique: true,
   },
+  location: {
+    type: String,
+    required: true
+  },
+  work: {
+    type: String
+  },
+  looking_for: [
+    // ?????
+    {
+      network: {type: Boolean},
+      date: {type: Boolean},
+      friends: {type: Boolean}
+    }
+  ],
+  favorite_language: {
+    type: String // how do set it to allow multiple oh no
+  },
+  likes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ],
+  passed: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ],
   password: {
     type: String,
     required: true,
