@@ -27,8 +27,16 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     email: String
-    orders: [Order]
+    age: Int
+    location: String
+    work: String
+    #looking_for: [?]
+    favorite_language: String
+    likes: [User]
+    passed: [User]
   }
+
+  
 
   type Auth {
     token: ID
