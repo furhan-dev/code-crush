@@ -27,7 +27,6 @@ const userSchema = new Schema({
     type: String
   },
   looking_for: [
-    // ?????
     {
       network: {type: Boolean},
       date: {type: Boolean},
@@ -35,7 +34,7 @@ const userSchema = new Schema({
     }
   ],
   favorite_language: {
-    type: String // how do set it to allow multiple oh no
+    type: String
   },
   likes: [
     {
