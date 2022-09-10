@@ -28,7 +28,6 @@ const typeDefs = gql`
   }
 
   type Query {
-    #user: User
     user(_id: ID!): User
   }
 
@@ -41,7 +40,7 @@ const typeDefs = gql`
       age: Int!
       location: String!
       work: String
-    ): Auth
+    ): User
     
     updateUser(
       firstName: String
