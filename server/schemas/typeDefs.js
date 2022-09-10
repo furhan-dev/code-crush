@@ -9,17 +9,10 @@ const typeDefs = gql`
     age: Int
     location: String
     work: String
-    looking_for: LookingFor
+    looking_for: String
     favorite_language: [String]
     likes: [User]
     passed: [User]
-  }
-
-  # not sure if this works
-  type LookingFor {
-    network: Boolean
-    date: Boolean
-    friends: Boolean
   }
 
   type Auth {
@@ -39,15 +32,20 @@ const typeDefs = gql`
       password: String!
       age: Int!
       location: String!
+      looking_for: String!
       work: String
-    ): User
+    ): Auth
     
     updateUser(
       firstName: String
       lastName: String
       email: String
       password: String
-    ): User
+      age: Int
+      location: String
+      looking_for: String
+      work: String
+    ): Auth
     
     login(email: String!, password: String!): Auth
   }

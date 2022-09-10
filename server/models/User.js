@@ -16,12 +16,12 @@ const userSchema = new Schema({
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true,
   },
   age: {
     type: Number,
     required: true,
-    unique: true,
   },
   location: {
     type: String,
@@ -30,13 +30,11 @@ const userSchema = new Schema({
   work: {
     type: String
   },
-  looking_for: [
-    {
-      network: {type: Boolean},
-      date: {type: Boolean},
-      friends: {type: Boolean}
-    }
-  ],
+  looking_for: {
+    type: String,
+    required: true,
+  }
+  ,
   favorite_language: {
     type: String
   },
