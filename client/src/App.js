@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import './assets/vendors/animate/animate.css';
+import './assets/vendors/themify-icons/css/themify-icons.css';
+import './assets/css/codecrush.css';
+
+
+// import {
+//     ApolloClient,
+//     InMemoryCache,
+//     ApolloProvider,
+//     createHttpLink,
+// } from '@apollo/client';
+// import { setContext } from '@apollo/client/link/context';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import Signup from './components/pages/Signup';
+// import Login from './components/pages/Login';
+// import Contact from './components/pages/Contact';
+import Home from "./components/pages/Home";
+import Head from "./components/Head";
+import Footer from "./components/Footer";
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+            <div>
+                <Head/>
+                <Home/>
+                <Footer />
+            </div>
   );
 }
 

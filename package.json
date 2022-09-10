@@ -1,7 +1,7 @@
 {
   "name": "code-crush",
   "version": "1.0.0",
-  "description": "",
+  "description": "code-crush",
   "main": "server/server.js",
   "scripts": {
     "start": "node server --ignore client",
@@ -15,5 +15,9 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.1",
+    "react-query": "^3.39.2"
   }
 }
