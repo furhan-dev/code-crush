@@ -4,51 +4,54 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    categories: async () => Category.find(),
-    products: async (parent, { category, name }) => {
-      const params = {};
-
-      if (category) {
-        params.category = category;
-      }
-
-      if (name) {
-        params.name = {
-          $regex: name,
-        };
-      }
-
-      return Product.find(params).populate('category');
+    user: async (parent, { username }) => {
+      return User.findOne({ username });
     },
-    product: async (parent, { id }) =>
-      Product.findById(id).populate('category'),
+    // categories: async () => Category.find(),
+    // products: async (parent, { category, name }) => {
+    //   const params = {};
 
-    user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user.id).populate({
-          path: 'orders.products',
-          populate: 'category',
-        });
+    //   if (category) {
+    //     params.category = category;
+    //   }
 
-        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+    //   if (name) {
+    //     params.name = {
+    //       $regex: name,
+    //     };
+    //   }
 
-        return user;
-      }
+    //   return Product.find(params).populate('category');
+    // },
+    // product: async (parent, { id }) =>
+    //   Product.findById(id).populate('category'),
 
-      throw new AuthenticationError('Not logged in');
-    },
-    order: async (parent, { id }, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user.id).populate({
-          path: 'orders.products',
-          populate: 'category',
-        });
+    // user: async (parent, args, context) => {
+    //   if (context.user) {
+    //     const user = await User.findById(context.user.id).populate({
+    //       path: 'orders.products',
+    //       populate: 'category',
+    //     });
 
-        return user.orders.id(id);
-      }
+    //     user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
-      throw new AuthenticationError('Not logged in');
-    },
+    //     return user;
+    //   }
+
+    //   throw new AuthenticationError('Not logged in');
+    // },
+    // order: async (parent, { id }, context) => {
+    //   if (context.user) {
+    //     const user = await User.findById(context.user.id).populate({
+    //       path: 'orders.products',
+    //       populate: 'category',
+    //     });
+
+    //     return user.orders.id(id);
+    //   }
+
+    //   throw new AuthenticationError('Not logged in');
+    // },
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -57,20 +60,20 @@ const resolvers = {
 
       return { token, user };
     },
-    addOrder: async (parent, { products }, context) => {
-      console.log(context);
-      if (context.user) {
-        const order = new Order({ products });
+    // addOrder: async (parent, { products }, context) => {
+    //   console.log(context);
+    //   if (context.user) {
+    //     const order = new Order({ products });
 
-        await User.findByIdAndUpdate(context.user.id, {
-          $push: { orders: order },
-        });
+    //     await User.findByIdAndUpdate(context.user.id, {
+    //       $push: { orders: order },
+    //     });
 
-        return order;
-      }
+    //     return order;
+    //   }
 
-      throw new AuthenticationError('Not logged in');
-    },
+    //   throw new AuthenticationError('Not logged in');
+    // },
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return User.findByIdAndUpdate(context.user.id, args, {
@@ -80,15 +83,15 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    updateProduct: async (parent, { id, quantity }) => {
-      const decrement = Math.abs(quantity) * -1;
+    // updateProduct: async (parent, { id, quantity }) => {
+    //   const decrement = Math.abs(quantity) * -1;
 
-      return Product.findByIdAndUpdate(
-        id,
-        { $inc: { quantity: decrement } },
-        { new: true }
-      );
-    },
+    //   return Product.findByIdAndUpdate(
+    //     id,
+    //     { $inc: { quantity: decrement } },
+    //     { new: true }
+    //   );
+    // },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
