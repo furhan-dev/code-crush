@@ -68,6 +68,18 @@ const resolvers = {
         return userPassed;
       }
       throw new AuthenticationError('You must be logged in.');
+    }, 
+
+    addMatch: async (parent, { input }, context) => {
+      if (context.user) {
+        const userMatches = await User.findOneAndUpdate(
+          { _id: context.user._id }, 
+          { $addToSet: { matches: input } }, 
+          { new: true }
+        )
+        return userMatches;
+      }
+      throw new AuthenticationError('You must be logged in.');
     }
   },
 };
