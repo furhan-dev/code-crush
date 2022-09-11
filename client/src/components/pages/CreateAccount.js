@@ -2,7 +2,7 @@ import React from 'react';
 import IMAGES from '../images';
 
 export default function Home() {
-    let year = document.write(new Date().getFullYear())
+    let year = (new Date().getFullYear())
   const inline = {
     display:'inline',
   };
@@ -55,7 +55,7 @@ export default function Home() {
                 <div className="overlay text-white text-center">
                     <h1 className="display-2 font-weight-bold my-3">Code Crush</h1>
                     <h2 className="display-4 mb-5">Always free!</h2>
-                    <a className="btn btn-lg btn-primary" href="/signup">Create Account</a>
+                    <a className="btn btn-lg btn-primary" href="/singup">Create Account</a>
                 </div>
             </header>
             
