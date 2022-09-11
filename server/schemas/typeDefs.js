@@ -20,8 +20,19 @@ const typeDefs = gql`
     user: User
   }
 
+  input userSwipe {
+    _id: ID
+    firstName: String
+    lastName: String
+    age: Int
+    location: String
+    work: String
+    favorite_language: [String]
+  }
+
   type Query {
     user(_id: ID!): User
+    me: User
   }
 
   type Mutation {
@@ -48,6 +59,10 @@ const typeDefs = gql`
     ): Auth
     
     login(email: String!, password: String!): Auth
+
+    addLike(input: userSwipe): User
+
+    addPass(input: userSwipe): User
   }
 `;
 
