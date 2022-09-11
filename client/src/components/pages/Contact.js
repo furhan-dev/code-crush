@@ -39,7 +39,7 @@ const CommentForm = () => {
         console.error(e);
     }
     alert('Thanks for contacting us, Your message was sent successfully, and we will contact you as soon as possible!');
-    // document.location.replace('/');
+    document.location.replace('/');
     setFormState ({name:'',comment:'',email:''});
     };
 
