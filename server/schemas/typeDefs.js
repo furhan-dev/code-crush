@@ -15,6 +15,14 @@ const typeDefs = gql`
     passed: [User]
   }
 
+  type Comment {
+    _id: ID
+    comment: String
+    name: String
+    date_created: String
+    email: String
+  }
+
   type Auth {
     token: ID
     user: User
@@ -68,7 +76,9 @@ const typeDefs = gql`
       looking_for: String
       work: String
     ): Auth
-    
+
+    addComment(comment: String,name: String,email:String): Comment
+
     login(email: String!, password: String!): Auth
 
     addLike(input: userSwipe): User
