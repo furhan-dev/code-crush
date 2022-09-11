@@ -50,6 +50,12 @@ const userSchema = new Schema({
       ref: 'User',
     }
   ],
+  matches: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ],
   password: {
     type: String,
     required: true,

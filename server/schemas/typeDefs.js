@@ -28,9 +28,30 @@ const typeDefs = gql`
     user: User
   }
 
+  input userSwipe {
+    _id: ID
+    firstName: String
+    lastName: String
+    age: Int
+    location: String
+    work: String
+    favorite_language: [String]
+  }
+
+  input userMatch {
+    _id: ID
+    firstName: String
+    lastName: String
+    age: Int
+    email: String
+    location: String
+    work: String
+    favorite_language: [String]
+  }
+
   type Query {
     user(_id: ID!): User
-    comments: [Comment]
+    me: User
   }
 
   type Mutation {
@@ -59,6 +80,12 @@ const typeDefs = gql`
     addComment(comment: String,name: String,email:String): Comment
 
     login(email: String!, password: String!): Auth
+
+    addLike(input: userSwipe): User
+
+    addPass(input: userSwipe): User
+
+    addMatch(input: userMatch): User
   }
 `;
 
