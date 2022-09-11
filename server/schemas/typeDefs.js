@@ -30,6 +30,17 @@ const typeDefs = gql`
     favorite_language: [String]
   }
 
+  input userMatch {
+    _id: ID
+    firstName: String
+    lastName: String
+    age: Int
+    email: String
+    location: String
+    work: String
+    favorite_language: [String]
+  }
+
   type Query {
     user(_id: ID!): User
     me: User
@@ -63,6 +74,8 @@ const typeDefs = gql`
     addLike(input: userSwipe): User
 
     addPass(input: userSwipe): User
+
+    addMatch(input: userMatch): User
   }
 `;
 
