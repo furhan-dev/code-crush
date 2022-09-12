@@ -77,7 +77,7 @@ const typeDefs = gql`
       work: String
     ): Auth
 
-    addComment(comment: String,name: String,email:String): Comment
+    
 
     login(email: String!, password: String!): Auth
 
