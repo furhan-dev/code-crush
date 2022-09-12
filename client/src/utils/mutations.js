@@ -14,33 +14,27 @@ export const LOGIN = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($name: String!, $email: String!, $password: String!) {
-    addUser(name: $name, email: $email, password: $password) {
+  mutation addUser($firstName: String!, $lastName: String!, $email: String!, $password: String!, $age: Int!, $location: String!, $looking_for: String!, $work: String ) {
+    addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password, age: $age, location: $location, looking_for: $looking_for, work: $work) {
       token
       user {
         _id
-        name
+        firstName
+        lastName 
+        age
+        location 
+        looking_for 
+        work
       }
     }
   }
 `;
 
-export const ADD_COMMENT = gql`
-  mutation addComment($comment: String!,$name: String,$email: String) {
-    addComment(comment: $comment,name:$name,email:$email) {
-      _id
-      comment
-      name
-      email
-    }
-  }
-`;
-
-export const SINGLE_USER = gql`
-  mutation singleUser($email: String!) {
-    user(email: $email) {
-        name
-        permission
-    }
-  }
-`;
+// export const SINGLE_USER = gql`
+//   mutation singleUser($email: String!) {
+//     user(email: $email) {
+//         name
+//         permission
+//     }
+//   }
+// `;
