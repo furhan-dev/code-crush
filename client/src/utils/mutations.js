@@ -30,6 +30,19 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_COMMENT = gql`
+  mutation addComment($email: String!, $password: String!) {
+    login(name: $name, email: $email, comment: $comment) {
+      token
+      comment {
+        name
+        email
+        comment
+      }
+    }
+  }
+`;
+
 // export const SINGLE_USER = gql`
 //   mutation singleUser($email: String!) {
 //     user(email: $email) {
