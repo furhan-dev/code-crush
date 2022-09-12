@@ -1,22 +1,13 @@
-
-
-
-import * as React from "react";
-
-
+import React from "react";
 
 export default function Header() {
-  let year = (new Date().getFullYear())
-    return (
+  return (
     <div>
-        {/* <!-- header --> */}
-        <header id="home" className="header">
+      {/* <!-- header --> */}
+      <header id="home" className="header">
         <div className="overlay text-white text-center">
-
-                                            
         </div>
-        </header>
+      </header>
     </div>
-    );
-  }
-
+  );
+}

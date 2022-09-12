@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import { useMutation } from '@apollo/client';
-import { LOGIN } from '../../utils/mutations';
-import Navbar from "../navbar";
-import Auth from '../../utils/auth';
+import { ADD_USER } from '../utils/mutations';
 
-const Login = (props) => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN);
+import Auth from '../utils/auth';
+import Navbar from '../components/navbar';
 
-  // update state based on form input changes
+const Signup = () => {
+  const [formState, setFormState] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+  const [addUser, { error, data }] = useMutation(ADD_USER);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -19,44 +24,35 @@ const Login = (props) => {
     });
   };
 
-  // submit form
   const handleFormSubmit = async (event) => {
-    if(!formState.email || !formState.password){
+    if(!formState.name || !formState.email || !formState.password){
       alert('Failed to submit your comment! please fill all requested fileds.');
       document.location.replace('/');
   }
     event.preventDefault();
     console.log(formState);
+
     try {
-      const { data } = await login({
+      const { data } = await addUser({
         variables: { ...formState },
       });
-      Auth.login(data.login.token,data.login.user.permission);
-      //localStorage.setItem('status',data.login.user.permission);
-      //Auth.login(data.login.token);
-    } catch (e) {
-      console.log(e);
-    }
 
-    // clear form values
-    setFormState({
-      email: '',
-      password: '',
-    });
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
-    <div>
+    <div>   
     <Navbar/>
-    <div>
-        {/* <!-- header --> */}
-        <header id="home" className="header">
-        <div className="overlay text-white text-center">
+    <header id="home" className="header">
+    <div className="overlay text-white text-center">
 
-        <main className="flex-row justify-center mb-4">
+    <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
+          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
           <div className="card-body">
             {data ? (
               <p>
@@ -67,9 +63,19 @@ const Login = (props) => {
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
+                  placeholder="Your username"
+                  name="name"
+                  id="name"
+                  type="text"
+                  value={formState.name}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
                   placeholder="Your email"
                   name="email"
                   type="email"
+                  id="email"
                   value={formState.email}
                   onChange={handleChange}
                 />
@@ -77,6 +83,7 @@ const Login = (props) => {
                   className="form-input"
                   placeholder="******"
                   name="password"
+                  id="password"
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
@@ -100,13 +107,10 @@ const Login = (props) => {
         </div>
       </div>
     </main>
-                                            
-        </div>
-        </header>
     </div>
-    
+    </header>
     </div>
   );
 };
 
-export default Login;
+export default Signup;
