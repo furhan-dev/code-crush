@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
+import { ADD_PROFILE } from '../utils/mutations';
 
 import Auth from '../utils/auth';
-import Navbar from '../components/navbar';
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -13,8 +12,9 @@ const Signup = () => {
     email: '',
     password: '',
   });
-  const [addUser, { error, data }] = useMutation(ADD_USER);
+  const [addProfile, { error, data }] = useMutation(ADD_PROFILE);
 
+  // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -24,31 +24,23 @@ const Signup = () => {
     });
   };
 
+  // submit form
   const handleFormSubmit = async (event) => {
-    if(!formState.name || !formState.email || !formState.password){
-      alert('Failed to submit your comment! please fill all requested fileds.');
-      document.location.replace('/');
-  }
     event.preventDefault();
     console.log(formState);
 
     try {
-      const { data } = await addUser({
+      const { data } = await addProfile({
         variables: { ...formState },
       });
 
-      Auth.login(data.addUser.token);
+      Auth.login(data.addProfile.token);
     } catch (e) {
       console.error(e);
     }
   };
 
   return (
-    <div>   
-    <Navbar/>
-    <header id="home" className="header">
-    <div className="overlay text-white text-center">
-
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
@@ -65,7 +57,6 @@ const Signup = () => {
                   className="form-input"
                   placeholder="Your username"
                   name="name"
-                  id="name"
                   type="text"
                   value={formState.name}
                   onChange={handleChange}
@@ -75,7 +66,6 @@ const Signup = () => {
                   placeholder="Your email"
                   name="email"
                   type="email"
-                  id="email"
                   value={formState.email}
                   onChange={handleChange}
                 />
@@ -83,13 +73,12 @@ const Signup = () => {
                   className="form-input"
                   placeholder="******"
                   name="password"
-                  id="password"
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-primary"
+                  className="btn btn-block btn-danger"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
@@ -107,9 +96,6 @@ const Signup = () => {
         </div>
       </div>
     </main>
-    </div>
-    </header>
-    </div>
   );
 };
 
