@@ -21,6 +21,8 @@ import Footer from "./components/Footer";
 import About from './pages/About';
 import Learn from './pages/Learn.js';
 import Reviews from './pages/Reviews';
+import UserCards from './pages/UserCards/UserCards';
+import SwipeButtons from './pages/SwipeButtons/SwipeButtons';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -56,41 +58,46 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home />}
+            element={<><Home /><Footer /></>}
           />
           <Route
             path="/login"
-            element={<Login />}
+            element={<><Login /><Footer /></>}
           />
           <Route
             path="/signup"
-            element={<Signup />}
+            element={<><Signup /><Footer /></>}
           />
           <Route
             path="/contact"
-            element={<Contact />}
+            element={<><Contact /><Footer /></>}
           />
 
           <Route
             path="/about"
-            element={<About />}
+            element={<><About /><Footer /></>}
           />
           <Route
             path="/Learn"
-            element={<Learn />}
+            element={<><Learn /><Footer /></>}
           />
           <Route
             path="/Reviews"
-            element={<Reviews />}
+            element={<><Reviews /><Footer /></>}
           />
 
           <Route
             path="/home"
-            element={<Home />}
+            element={<><Home /><Footer /></>}
           />
+           <Route
+            path="/UserCards"
+            element={<><UserCards /><SwipeButtons /></>}
+          />
+          
         </Routes>
       </Router>
-      <Footer />
+      
     </ApolloProvider>
   );
 }
