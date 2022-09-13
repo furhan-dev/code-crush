@@ -30,15 +30,14 @@ export const ADD_USER = gql`
   }
 `;
 
+//contact us part
 export const ADD_COMMENT = gql`
-  mutation addComment($email: String!, $password: String!) {
-    login(name: $name, email: $email, comment: $comment) {
-      token
-      comment {
-        name
-        email
-        comment
-      }
+  mutation addComment($comment: String!,$name: String,$email: String) {
+    addComment(comment: $comment,name:$name,email:$email) {
+      _id
+      comment
+      name
+      email
     }
   }
 `;

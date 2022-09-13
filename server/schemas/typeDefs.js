@@ -52,6 +52,7 @@ const typeDefs = gql`
   type Query {
     user(_id: ID!): User
     me: User
+    comments: [Comment]
   }
 
   type Mutation {
@@ -77,7 +78,7 @@ const typeDefs = gql`
       work: String
     ): Auth
 
-    addComment(comment: String, name: String, email: String): Comment
+    addComment(comment: String,name: String,email:String): Comment
 
     login(email: String!, password: String!): Auth
 

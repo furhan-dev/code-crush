@@ -7,6 +7,9 @@ const resolvers = {
     user: async (parent, { firstName, lastName }) => {
       return User.findOne({ firstName, lastName });
     },
+    comments: async () => {
+      return Comment.find();
+    }
   },
 
   Mutation: {
@@ -16,6 +19,12 @@ const resolvers = {
 
       return { token, user };
 
+    },
+
+    //contact us 
+    addComment: async (parent, { comment,name,email }) => {
+      const comments = await Comment.create({comment,name,email});
+      return { comments };
     },
 
     updateUser: async (parent, args, context) => {
