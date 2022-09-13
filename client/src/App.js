@@ -1,10 +1,4 @@
 import React from "react";
-import UserHeader from "./pages/UserHeader/UserHeader"
-import UserCards from "./pages/UserCards/UserCards";
-import SwipeButtons from './pages/SwipeButtons/SwipeButtons';
-import HomeBody from './pages/HomeBody';
-
-
 import './assets/vendors/animate/animate.css';
 import './assets/vendors/themify-icons/css/themify-icons.css';
 import './assets/css/codecrush.css';
@@ -24,9 +18,10 @@ import Home from "./pages/Home";
 // import Head from "./components/Head";
 import Footer from "./components/Footer";
 import About from './pages/About';
-import Learn from './pages/Learn.js';
+import Learn from './pages/Learn';
 import Reviews from './pages/Reviews';
 import Navbar from './components/navbar';
+import HomeBody from './pages/HomeBody';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -77,36 +72,35 @@ function App() {
           /> */}
           <Route
             path="/contact"
-            element={<><Contact /><Navbar /></>}
+            element={<><Navbar /><Contact /></>}
           />
 
           <Route
             path="/about"
-            element={<><About /><Navbar /></>}
+            element={<><Navbar /><About /></>}
           />
           <Route
             path="/Learn"
-            element={<><Learn /><Navbar /></>}
+            element={<><Navbar /><Learn /></>}
           />
           <Route
             path="/Reviews"
-            element={<><Reviews /><Navbar /></>}
+            element={<><Navbar /><Reviews /></>}
           />
 
           <Route
             path="/home"
-            element={<><Home /><Navbar /></>}
+            element={<><Navbar /><Home /></>}
           />
-          <Route
-            path="/UserCards"
-            element={<><UserCards /><SwipeButtons /></> }
+          
            
-          />
+          
         </Routes>
       </Router>
-      {/* <Footer /> */}
+      <Footer />
     </ApolloProvider>
   );
 }
 
 export default App;
+
