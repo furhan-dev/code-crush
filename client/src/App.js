@@ -12,7 +12,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Signup from './pages/Signup';
+import Signup from './pages/Signup2';
 import Login from './pages/Login';
 import Contact from './pages/Contact';
 import Home from "./pages/Home";
