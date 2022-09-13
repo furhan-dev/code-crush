@@ -44,7 +44,6 @@ const CommentForm = () => {
 
   return (
     <div>
-      <Navbar />
       <header id="home" className="header">
         <div className="overlay text-white text-center">
           {/* <!-- Start Content Page --> */}

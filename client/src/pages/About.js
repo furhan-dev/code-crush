@@ -1,11 +1,9 @@
 import React from "react";
 
-import Navbar from "../components/navbar";
 
 export default function About() {
   return (
     <div>
-      <Navbar />
       {/* <!-- header --> */}
       <header id="home" className="header">
         <div className="overlay text-white text-center">
