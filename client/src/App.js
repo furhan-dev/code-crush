@@ -23,6 +23,8 @@ import Learn from './pages/Learn.js';
 import Reviews from './pages/Reviews';
 import UserCards from './pages/UserCards/UserCards';
 import SwipeButtons from './pages/SwipeButtons/SwipeButtons';
+import Navbar from './components/navbar';
+import HomeBody from './pages/HomeBody';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -54,12 +56,13 @@ function App() {
 
     <ApolloProvider client={client}>
       <Router>
-        <Head />
+        <Navbar />
         <Routes>
           <Route
-            path="/"
-            element={<><Home /><Footer /></>}
-          />
+          
+           path="/"
+           element={<><Home /> <HomeBody /> <Footer /> </>}
+         />
           <Route
             path="/login"
             element={<><Login /><Footer /></>}
