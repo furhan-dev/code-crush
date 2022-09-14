@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Fira+Code:wght@300&family=Raleway+Dots&display=swap');
+
+.brand-font {
+  font-family: 'Audiowide', monospace;
+  font-size: 2.3rem;
+}
+
+.link-font {
+  font-family: 'Fira Code', monospace;
+}

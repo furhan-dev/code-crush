@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';
 
+import './index.css';
 import Auth from '../../utils/auth';
 
 function Header() {
@@ -15,11 +16,11 @@ function Header() {
     <Navbar className='mb-4' collapseOnSelect expand="lg" bg="danger" variant="dark">
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand>Code Crush</Navbar.Brand>
+          <Navbar.Brand className='brand-font me-5'>Code Crush</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto link-font">
             {Auth.loggedIn() ? (
               <>
                 <LinkContainer to="/">
@@ -33,7 +34,7 @@ function Header() {
               <></>
             )}
           </Nav>
-          <Nav>
+          <Nav className='link-font'>
             {Auth.loggedIn() ? (
               <>
                 <LinkContainer to="/signup">
