@@ -1,40 +1,32 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Comment } = require('../models');
+const { User } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    user: async (parent, { firstName, lastName }) => {
-      return User.findOne({ firstName, lastName });
+    users: async () => {
+      return User.find();
     },
-    comments: async () => {
-      return Comment.find();
-    }
+    user: async (parent, { userId }) => {
+      return User.findOne({ _id: userId });
+    },
+    // By adding context to our query, we can retrieve the logged in user without specifically searching for them
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 
   Mutation: {
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
+    addUser: async (parent, { firstName, lastName, email, password, age, location }) => {
+      age = parseInt(age);
+      const user = await User.create({ firstName, lastName, email, password, age, location });
       const token = signToken(user);
 
       return { token, user };
 
-    },
-
-    //contact us 
-    addComment: async (parent, { comment,name,email }) => {
-      const comments = await Comment.create({comment,name,email});
-      return { comments };
-    },
-
-    updateUser: async (parent, args, context) => {
-      if (context.user) {
-        return User.findByIdAndUpdate(context.user.id, args, {
-          new: true,
-        });
-      }
-
-      throw new AuthenticationError('Not logged in');
     },
 
     login: async (parent, { email, password }) => {
@@ -54,42 +46,6 @@ const resolvers = {
 
       return { token, user };
     },
-
-    addLike: async (parent, { input }, context) => {
-      if (context.user) {
-        const userLikes = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { likes: input } },
-          { new: true }
-        );
-        return userLikes;
-      }
-      throw new AuthenticationError('You must be logged in.');
-    },
-
-    addPass: async (parent, { input }, context) => {
-      if (context.user) {
-        const userPassed = await User.findOneAndUpdate(
-          { _id: context.user._id }, 
-          { $addToSet: { passed: input } }, 
-          { new: true }
-        )
-        return userPassed;
-      }
-      throw new AuthenticationError('You must be logged in.');
-    }, 
-
-    addMatch: async (parent, { input }, context) => {
-      if (context.user) {
-        const userMatches = await User.findOneAndUpdate(
-          { _id: context.user._id }, 
-          { $addToSet: { matches: input } }, 
-          { new: true }
-        )
-        return userMatches;
-      }
-      throw new AuthenticationError('You must be logged in.');
-    }
   },
 };
 
