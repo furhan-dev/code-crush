@@ -35,3 +35,11 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_LIKE = gql`
+  mutation addLike($userId: ID!) {
+    addLike(userId: $userId) {
+      isMatch
+    }
+  }
+`;
