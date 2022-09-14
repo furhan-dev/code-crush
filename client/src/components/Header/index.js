@@ -16,7 +16,14 @@ function Header() {
     <Navbar className='mb-4' collapseOnSelect expand="lg" bg="danger" variant="dark">
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand className='brand-font me-5'>Code Crush</Navbar.Brand>
+          <Navbar.Brand className='me-5'>
+            <div className='brand-font'>
+              Code Crush
+            </div>
+            <div className='brand-subheader-font'>
+              you.date(softwareDeveloper);
+            </div>
+          </Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

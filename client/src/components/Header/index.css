@@ -2,9 +2,12 @@
 
 .brand-font {
   font-family: 'Audiowide', monospace;
-  font-size: 2.3rem;
+  font-size: 2.55rem;
 }
 
-.link-font {
+.link-font,
+.brand-subheader-font {
+  font-size: 1rem;
   font-family: 'Fira Code', monospace;
+  margin-top: -.75rem;
 }
