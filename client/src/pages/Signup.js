@@ -47,7 +47,7 @@ const Signup = () => {
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
+          <h4 className="card-header bg-dark text-light p-2">Create Account</h4>
           <div className="card-body">
             {data ? (
               <p>
@@ -58,49 +58,49 @@ const Signup = () => {
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
-                  placeholder="Your First Name"
+                  placeholder="First Name"
                   name="firstName"
-                  type="text"
+                  type="text" required
                   value={formState.firstName}
                   onChange={handleChange}
                 />
                 <input
                   className="form-input"
-                  placeholder="Your Last Name"
+                  placeholder="Last Name"
                   name="lastName"
-                  type="text"
+                  type="text" required
                   value={formState.lastName}
                   onChange={handleChange}
                 />
                 <input
                   className="form-input"
-                  placeholder="Your email"
+                  placeholder="Email"
                   name="email"
-                  type="email"
+                  type="email" required
                   value={formState.email}
                   onChange={handleChange}
                 />
                 <input
                   className="form-input"
-                  placeholder="******"
+                  placeholder="Password"
                   name="password"
-                  type="password"
+                  type="password" required
                   value={formState.password}
                   onChange={handleChange}
                 />
                 <input
                   className="form-input"
-                  placeholder="Your Age"
+                  placeholder="Age"
                   name="age"
-                  type="number"
+                  type="number" required
                   value={formState.age}
                   onChange={handleChange}
                 />
                 <input
                   className="form-input"
-                  placeholder="Your Location"
+                  placeholder="Location"
                   name="location"
-                  type="text"
+                  type="text" required
                   value={formState.location}
                   onChange={handleChange}
                 />

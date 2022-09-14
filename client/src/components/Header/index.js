@@ -51,7 +51,7 @@ function Header() {
             ) : (
               <>
                 <LinkContainer to="/signup">
-                  <Nav.Link>Signup</Nav.Link>
+                  <Nav.Link className='me-3'>Create Account</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to="/login">
                   <Nav.Link>Login</Nav.Link>
