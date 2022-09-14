@@ -1,48 +1,60 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import { LinkContainer } from 'react-router-bootstrap';
 
 import Auth from '../../utils/auth';
 
-const Header = () => {
+function Header() {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
   return (
-    <header className="bg-danger text-dark mb-4 py-3 display-flex align-center">
-      <div className="container flex-column justify-space-between-lg justify-center align-center text-center">
-        <Link className="text-dark" to="/">
-          <h1 className="m-0" style={{ fontSize: '3rem' }}>
-            Code Crush
-          </h1>
-        </Link>
-        <p className="m-0" style={{ fontSize: '1.75rem', fontWeight: '700' }}>
-          you.date(softwareDeveloper);
-        </p>
-        <div>
-          {Auth.loggedIn() ? (
-            <>
-              <Link className="btn btn-lg btn-primary m-2" to="/me">
-                View My Profile
-              </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link className="btn btn-lg btn-primary m-2" to="/login">
-                Login
-              </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/signup">
-                Signup
-              </Link>
-            </>
-          )}
-        </div>
-      </div>
-    </header>
+    <Navbar className='mb-4' collapseOnSelect expand="lg" bg="danger" variant="dark">
+      <Container>
+        <LinkContainer to="/">
+          <Navbar.Brand>Code Crush</Navbar.Brand>
+        </LinkContainer>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            {Auth.loggedIn() ? (
+              <>
+                <LinkContainer to="/">
+                  <Nav.Link>Profile</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to="/">
+                  <Nav.Link>Matches</Nav.Link>
+                </LinkContainer>
+              </>
+            ) : (
+              <></>
+            )}
+          </Nav>
+          <Nav>
+            {Auth.loggedIn() ? (
+              <>
+                <LinkContainer to="/signup">
+                  <Nav.Link onClick={logout}>Logout</Nav.Link>
+                </LinkContainer>
+              </>
+            ) : (
+              <>
+                <LinkContainer to="/signup">
+                  <Nav.Link>Signup</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to="/login">
+                  <Nav.Link>Login</Nav.Link>
+                </LinkContainer>
+              </>
+            )}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
-};
+}
 
 export default Header;
