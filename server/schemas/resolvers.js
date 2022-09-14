@@ -29,6 +29,30 @@ const resolvers = {
 
     },
 
+    addLike: async (parent, { userId }, context) => {
+      await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { likes: userId } },
+        { new: true }
+      );
+      const otherUser = await User.findOne({ _id: userId });
+      if (otherUser.likes.includes(context.user._id)) {
+        // update matches for both users
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { matches: userId } },
+          { new: true }
+        );
+        await User.findOneAndUpdate(
+          { _id: userId },
+          { $addToSet: { matches: context.user._id } },
+          { new: true }
+        );
+        return true;
+      }
+      return false;
+    },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 

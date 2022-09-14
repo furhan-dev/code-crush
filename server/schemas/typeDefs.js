@@ -38,6 +38,10 @@ const typeDefs = gql`
       looking_for: String
       work: String
     ): Auth
+
+    addLike(
+      userId: ID!
+    ): Boolean
     
     login(email: String!, password: String!): Auth
   }
