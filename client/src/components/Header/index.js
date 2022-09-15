@@ -30,10 +30,10 @@ function Header() {
           <Nav className="me-auto link-font">
             {Auth.loggedIn() ? (
               <>
-                <LinkContainer to="/">
+                <LinkContainer to="/profile">
                   <Nav.Link>Profile</Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="/">
+                <LinkContainer to="/matches">
                   <Nav.Link>Matches</Nav.Link>
                 </LinkContainer>
               </>
