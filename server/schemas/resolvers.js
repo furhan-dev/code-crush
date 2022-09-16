@@ -18,6 +18,7 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
+    // gets the next user from pool of users to display
     nextUser: async (parent, args, context) => {
       if (context.user) {
         // get all user ids
