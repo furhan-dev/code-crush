@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { LOGIN } from '../utils/mutations';
-import Navbar from "../components/navbar";
 import Auth from '../utils/auth';
 
 const Login = (props) => {
@@ -48,7 +47,6 @@ const Login = (props) => {
 
   return (
     <div>
-      <Navbar />
       <div>
         {/* <!-- header --> */}
         <header id="home" className="header">

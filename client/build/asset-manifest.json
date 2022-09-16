@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ef101dd7.css",
+    "main.js": "/static/js/main.770e96ad.js",
+    "static/media/main.jpg": "/static/media/main.26c63f00edc7adb1c9af.jpg",
+    "static/media/themify.svg?-fvbane": "/static/media/themify.f0fc8c798eac5636249c.svg",
+    "static/media/RollWithUsAnywhere.jpg": "/static/media/RollWithUsAnywhere.c63ec9233138de7ea8ca.jpg",
+    "static/media/FacetoFace.jpg": "/static/media/FacetoFace.b281bd2681db8a401eaf.jpg",
+    "static/media/about-section.jpg": "/static/media/about-section.8f95d2b141a3f5f90cd1.jpg",
+    "static/media/finger.jpg": "/static/media/finger.21bfaa966e152c4ec2eb.jpg",
+    "static/media/verify.jpg": "/static/media/verify.58e7ddb6271a2412d13d.jpg",
+    "static/media/who.jpg": "/static/media/who.098a90a5c211f8ea0b1e.jpg",
+    "static/media/Inclusive.jpg": "/static/media/Inclusive.856b4668220fa2e614a8.jpg",
+    "static/media/ConnectWithPeopleEverywhere.jpg": "/static/media/ConnectWithPeopleEverywhere.e5a2cd7a808a6f540256.jpg",
+    "static/media/themify.eot": "/static/media/themify.9bad94440d49256265a5.eot",
+    "static/media/themify.ttf?-fvbane": "/static/media/themify.eda8b94308c6f538f04a.ttf",
+    "static/media/ExploreYourPassions.jpg": "/static/media/ExploreYourPassions.37c24fbfc686e59e7836.jpg",
+    "static/media/themify.woff?-fvbane": "/static/media/themify.29b39089170885ae2967.woff",
+    "static/media/logo.png": "/static/media/logo.8adcbd0d08a2377563fa.png",
+    "index.html": "/index.html",
+    "main.ef101dd7.css.map": "/static/css/main.ef101dd7.css.map",
+    "main.770e96ad.js.map": "/static/js/main.770e96ad.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ef101dd7.css",
+    "static/js/main.770e96ad.js"
+  ]
+}
