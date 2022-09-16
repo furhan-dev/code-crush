@@ -47,3 +47,19 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_NEXT_USER = gql`
+  query nextUser {
+    nextUser {
+      _id
+      firstName
+      lastName 
+      email
+      age
+      location 
+      looking_for 
+      favorite_language
+      work
+    }
+  }
+`;
