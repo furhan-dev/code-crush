@@ -49,7 +49,6 @@ const Login = (props) => {
 
   return (
     <div>
-      <Navbar />
       <div>
         {/* <!-- header --> */}
         <header id="home" className="header">
