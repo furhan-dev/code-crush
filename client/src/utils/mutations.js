@@ -30,6 +30,14 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_LIKE = gql`
+  mutation addLike($userId: ID!) {
+    addLike(userId: $userId) {
+      isMatch
+    }
+  }
+`;
+
 //contact us part
 export const ADD_COMMENT = gql`
   mutation addComment($comment: String!,$name: String,$email: String) {
