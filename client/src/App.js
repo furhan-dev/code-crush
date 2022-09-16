@@ -12,7 +12,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Signup from './pages/Signup';
+import Signup from './pages/Signup2';
 import Login from './pages/Login';
 import Contact from './pages/Contact';
 import Home from "./pages/Home";
@@ -21,10 +21,9 @@ import Footer from "./components/Footer";
 import About from './pages/About';
 import Learn from './pages/Learn.js';
 import Reviews from './pages/Reviews';
-import UserCards from './pages/UserCards/UserCards';
-import SwipeButtons from './pages/SwipeButtons/SwipeButtons';
-import Navbar from './components/navbar';
-import HomeBody from './pages/HomeBody';
+// import Matching from "./pages/Matching";
+// import UserProfile from './pages/UserProfile'
+import EditProfile from './components/EditProfile'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -56,51 +55,60 @@ function App() {
 
     <ApolloProvider client={client}>
       <Router>
-        <Navbar />
+        <Head />
         <Routes>
           <Route
-          
-           path="/"
-           element={<><Home /> <HomeBody /> <Footer /> </>}
-         />
+            path="/"
+            element={<Home />}
+          />
           <Route
             path="/login"
-            element={<><Login /><Footer /></>}
+            element={<Login />}
           />
           <Route
             path="/signup"
-            element={<><Signup /><Footer /></>}
+            element={<Signup />}
           />
           <Route
             path="/contact"
-            element={<><Contact /><Footer /></>}
+            element={<Contact />}
           />
 
           <Route
             path="/about"
-            element={<><About /><Footer /></>}
+            element={<About />}
           />
           <Route
             path="/Learn"
-            element={<><Learn /><Footer /></>}
+            element={<Learn />}
           />
           <Route
             path="/Reviews"
-            element={<><Reviews /><Footer /></>}
+            element={<Reviews />}
           />
-
+          {/* <Route
+            path="/matching"
+            element={<Matching />}
+          /> */}
+          {/* <Route
+            path="/userprofile"
+            element={<UserProfile />}
+          /> */}
+          <Route
+            path="/editprofile"
+            element={<EditProfile />}
+          />
           <Route
             path="/home"
-            element={<><Home /><Footer /></>}
+            element={<Home />}
           />
-           <Route
-            path="/UserCards"
-            element={<><UserCards /><SwipeButtons /></>}
+          <Route
+            path="*"
+            element={<Home />}
           />
-          
         </Routes>
       </Router>
-      
+      <Footer />
     </ApolloProvider>
   );
 }

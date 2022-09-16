@@ -33,6 +33,7 @@ const Login = (props) => {
         variables: { ...formState },
       });
       Auth.login(data.login.token, data.login.user.permission);
+      document.location.replace('/matching');
       //localStorage.setItem('status',data.login.user.permission);
       //Auth.login(data.login.token);
     } catch (e) {
