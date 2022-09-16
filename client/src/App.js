@@ -24,6 +24,7 @@ import Reviews from './pages/Reviews';
 // import Matching from "./pages/Matching";
 // import UserProfile from './pages/UserProfile'
 import EditProfile from './components/EditProfile'
+import Navbar from './components/navbar'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -55,6 +56,8 @@ function App() {
 
     <ApolloProvider client={client}>
       <Router>
+      <Navbar />
+
         <Head />
         <Routes>
           <Route
