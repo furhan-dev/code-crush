@@ -132,7 +132,7 @@ const Signup = () => {
                     <div className="my-3 p-3 bg-danger text-white">
                       {error.message.includes('duplicate key')
                         ? `Account with email '${formState.email}' already exists!`
-                        : error.message}
+                        : 'Server Error'}
                     </div>
                   )}
                 </Form>)}

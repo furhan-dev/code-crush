@@ -17,6 +17,31 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+
+    nextUser: async (parent, args, context) => {
+      if (context.user) {
+        // get all user ids
+        const allUsers = await User.find().select("_id");
+        const allIds = allUsers.map((user) => user._id);
+        // get current user
+        const currentUser = await User.findOne({ _id: context.user._id });
+        // create list of seen users + current user
+        const seenUsers = currentUser.passed.concat(currentUser.likes);
+        seenUsers.push(context.user._id);
+        // map ids to string for comparison
+        const seenIds = seenUsers.map(ids => ids.toString());
+        // filter ids if they've been seen by current user already
+        const remainingIds = allIds.filter(id => !seenIds.includes(id.toString()));
+        // return random user from remaining users
+        if (remainingIds) {
+          const randomUserId = remainingIds[Math.floor(remainingIds.length * Math.random())];
+          return User.findOne({ _id: randomUserId });
+        } else {
+          return null;
+        }
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 
   Mutation: {
