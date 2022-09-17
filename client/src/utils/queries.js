@@ -11,6 +11,24 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const NEXT_USER = gql`
+  query nextUser {
+    user {
+      id
+      name
+    }
+  }
+`;
+
+export const USER_MATCHES = gql`
+  query me {
+    me {
+      id
+      matches
+    }
+  }  
+`
+
 export const QUERY_COMMENT = gql`
   query getComments {
     comments {
