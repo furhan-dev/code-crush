@@ -7,7 +7,7 @@
 
   This app demonstrates a React front end on top of a Node.js and Express.js server. MongoDB is utilized for the database, and Mongoose for DB management in Node. 
 
-  ## [CHANGEME Click here for the Heroku deployed live demo](www.google.com)
+  ## [Click here for the Heroku deployed live demo](https://mycodecrush.herokuapp.com/)
 
   * * * * * *
 
@@ -30,9 +30,16 @@
   ## Usage
   Once installed, this app can be accessed by default at localhost:3000 in your browser.
 
-  ## CHANGE THESE IMAGES AND REMOVE THIS HEADER
+  *****
+
   ![demo1.png](./assets/images/demo1.png)
+
+  *****
+
   ![demo2.png](./assets/images/demo2.png)
+
+  *****
+
   ![demo3.png](./assets/images/demo3.png)
   
   <a name="Credits"></a>
