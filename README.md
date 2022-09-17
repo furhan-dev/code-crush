@@ -7,7 +7,7 @@
 
   This app demonstrates a React front end on top of a Node.js and Express.js server. MongoDB is utilized for the database, and Mongoose for DB management in Node. 
 
-  ## [CHANGEME Click here for the Heroku deployed live demo](www.google.com)
+  ## [Click here for the Heroku deployed live demo](https://mycodecrush.herokuapp.com/)
 
   * * * * * *
 
@@ -36,9 +36,16 @@
   In order to being matching, you must create an account. Use the sign up option and fill in the fields to create your profile. Once you have finished creating your profile, you will be taken to a page to view other users in order to match. Choose the option to either like or pass, and these users will be added to your personal lists of whom you've rated. Positively rated users who have also positively rated the logged in user will be added to a list of matches, which is where more profile info can be viewed. 
   
 
-  ## CHANGE THESE IMAGES AND REMOVE THIS HEADER
+  *****
+
   ![demo1.png](./assets/images/demo1.png)
+
+  *****
+
   ![demo2.png](./assets/images/demo2.png)
+
+  *****
+
   ![demo3.png](./assets/images/demo3.png)
   
   <a name="Credits"></a>
