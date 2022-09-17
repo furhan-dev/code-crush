@@ -15,7 +15,80 @@ export default function Home() {
   };
   return (
     <div>
-    
+      <div>
+        {/* <!-- Navbar --> */}
+        <nav className="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10">
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a className="nav-link" href="#home">Home</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#about">About</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#gallary">Learn</a>
+              </li>
+            </ul>
+            <a className="navbar-brand m-auto" href="/#">
+              <img src={IMAGES.logo} className="brand-img" alt="" />
+              <span className="brand-txt">Code Crush</span>
+            </a>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a className="nav-link" href="#testmonial">Reviews</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/contact">Contact Us</a>
+              </li>
+              {Auth.loggedIn() ? (
+              <li className="nav-item">
+                      <a className="nav-link" href="/matching">Start Swiping</a>
+              </li>):null}
+              <li className="nav-item">
+                <div>
+                  {permission ? (
+                    <Link className="btn btn-primary" to="/me">
+                      {Auth.getProfile().data.name}
+                    </Link>
+                  ) : null}
+                </div>
+              </li>
+                <div>
+                  {Auth.loggedIn() ? (
+                    <>              
+                    <li className="nav-item">
+                    <Link className="btn btn-primary ml-xl-4" to="/userprofile">
+                       Profile
+                    </Link>
+                      <a className="btn btn-primary ml-xl-4" onClick={logout}>
+                        Logout
+                      </a>
+                    </li>
+                    </> 
+                  ) : ( 
+                    <>
+                    <li className="nav-item">
+                      <Link className="btn btn-primary ml-xl-4" to="/login">
+                        Login
+                      </Link>
+                      <Link className="btn btn-primary ml-xl-4" to="/signup">
+                        Signup
+                      </Link>
+                    </li>
+
+                    </>
+
+                  )}
+                  
+                </div>
+            </ul>
+          </div>
+        </nav>
+      </div>
 
       {/* <!-- header --> */}
       <header id="home" className="header">

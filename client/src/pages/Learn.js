@@ -1,5 +1,6 @@
 import React from "react";
 
+import Navbar from "../components/navbar";
 import IMAGES from "../components/images";
 
 export default function Learn() {
@@ -8,6 +9,7 @@ export default function Learn() {
   }
   return (
     <div>
+      <Navbar />
       {/* <!-- header --> */}
       <header id="home">
         <div >
