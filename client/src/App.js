@@ -19,9 +19,15 @@ import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import About from './pages/About';
 import Learn from './pages/Learn';
-import Reviews from './pages/Reviews';
+import Reviews from './pages/Reviews'; 
 import Navbar from './components/navbar';
 import HomeBody from './pages/HomeBody';
+import UserCards from './pages/UserCards/UserCards';
+import SwipeButtons from './pages/SwipeButtons/SwipeButtons';
+import Profile from './pages/Profile';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -55,49 +61,56 @@ function App() {
 
       <Router>
      
-
+      <Navbar />
         <Routes>
 
           <Route
             path="/"
-            element={<><Navbar /><Home /> <HomeBody /> </>}
+            element={<><Home /> <HomeBody /> <Footer /> </>}
           />
-          {/* <Route
+          <Route
             path="/login"
             element={<Login />}
           />
           <Route
             path="/signup"
-            element={<Signup />}
-          /> */}
+            element={<><Signup /> <Footer /></>}
+          />
           <Route
             path="/contact"
-            element={<><Navbar /><Contact /></>}
+            element={<><Contact /> <Footer /></>}
           />
 
           <Route
             path="/about"
-            element={<><Navbar /><About /></>}
+            element={<><About /> <Footer /></>}
           />
           <Route
             path="/Learn"
-            element={<><Navbar /><Learn /></>}
+            element={<><Learn /> <Footer /></>}
           />
           <Route
             path="/Reviews"
-            element={<><Navbar /><Reviews /></>}
+            element={<><Reviews /> <Footer /></>}
           />
 
           <Route
             path="/home"
-            element={<><Navbar /><Home /></>}
+            element={<><Home /> <Footer /></>}
           />
-          
+           <Route
+            path="/UserCards"
+            element={<><UserCards /><SwipeButtons /></>}
+          />
+          <Route
+                path="/profile"
+                element={<Profile />}
+              />
            
           
         </Routes>
       </Router>
-      <Footer />
+     
     </ApolloProvider>
   );
 }

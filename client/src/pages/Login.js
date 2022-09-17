@@ -1,88 +1,104 @@
-// // see SignupForm.js for comments
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
-import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from '../utils/mutations';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
+
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../utils/mutations';
+
 import Auth from '../utils/auth';
 
-const LoginForm = () => {
-  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
-  const [validated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
-  const [loginUser, { error }] = useMutation(LOGIN_USER);
+const Login = (props) => {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  // eslint-disable-next-line
+  const [login, { error, data }] = useMutation(LOGIN);
 
-  const handleInputChange = (event) => {
+  // update state based on form input changes
+  const handleChange = (event) => {
     const { name, value } = event.target;
-    setUserFormData({ ...userFormData, [name]: value });
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
   };
 
+  // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
-    // check if form has everything (as per react-bootstrap docs)
-    // const form = event.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   event.preventDefault();
-    //   event.stopPropagation();
-    // }
-
+    console.log(formState);
     try {
-        const { data } = await loginUser({
-        variables: { ...userFormData }
-      })
+      const { data } = await login({
+        variables: { ...formState, },
+      });
+
       Auth.login(data.login.token);
-    } catch (err) {
-      console.error(err);
-      setShowAlert(true);
+    } catch (e) {
+      console.error(e);
     }
 
-    setUserFormData({
-      username: '',
+    // clear form values
+    setFormState({
       email: '',
       password: '',
     });
   };
 
-  return (
-    <>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-          Something went wrong with your login credentials!
-        </Alert>
-        <Form.Group>
-          <Form.Label htmlFor='email'>Email</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='Your email'
-            name='email'
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
-        </Form.Group>
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
-        <Form.Group>
-          <Form.Label htmlFor='password'>Password</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='Your password'
-            name='password'
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
-        </Form.Group>
-        <Button
-          disabled={!(userFormData.email && userFormData.password)}
-          type='submit'
-          variant='success'>
-          Submit
-        </Button>
-      </Form>
-    </>
+  return (
+    <Container fluid>
+      <Row className="justify-content-xs-center">
+        <Col xs="12" lg={{ span: 8, offset: 2 }}>
+          <Card>
+            <Card.Header className='bg-dark p-2'><h4 className="m-0">Login</h4></Card.Header>
+            <Card.Body>
+              {Auth.loggedIn() ? (
+                <>
+                  <Card.Title>{`Logged in as ${Auth.getUser().data.email}`}</Card.Title>
+                  <Button onClick={logout}>Logout</Button>
+                </>
+              ) : (
+                <Form onSubmit={handleFormSubmit}>
+                  <Form.Control
+                    size='lg'
+                    className='my-2'
+                    placeholder="Enter email"
+                    type="email"
+                    name="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                  />
+                  <Form.Control
+                    size='lg'
+                    className="my-2"
+                    placeholder="******"
+                    name="password"
+                    type="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                  />
+                  <Button variant="primary" type="submit">
+                    Submit
+                  </Button>
+                  {error && (
+                    <div className="my-3 p-3 bg-danger text-white">
+                      {error.message}
+                    </div>
+                  )}
+                </Form>)}
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container >
   );
 };
 
-export default LoginForm;
+export default Login;

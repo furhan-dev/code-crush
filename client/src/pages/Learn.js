@@ -1,7 +1,7 @@
 import React from "react";
 
 import Navbar from "../components/navbar";
-import IMAGES from "../components/images";
+import IMAGES from "../components/images"; 
 
 export default function Learn() {
   const margin = {
