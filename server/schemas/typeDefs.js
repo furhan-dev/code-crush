@@ -30,12 +30,11 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(
-      firstName: String!
-      lastName: String!
+      username: String!
       email: String!
       password: String!
-      age: Int! 
-      location: String!
+      age: Int 
+      location: String
       looking_for: String
       work: String
     ): Auth
@@ -43,6 +42,10 @@ const typeDefs = gql`
     addLike(
       userId: ID!
     ): Boolean
+
+    addPass(
+      userId: ID!
+    ): User
     
     login(email: String!, password: String!): Auth
   }
