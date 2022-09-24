@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { LOGIN } from '../utils/mutations';
-import Navbar from "../components/navbar";
 import Auth from '../utils/auth';
 
 const Login = (props) => {
@@ -23,7 +22,7 @@ const Login = (props) => {
   // submit form
   const handleFormSubmit = async (event) => {
     if (!formState.email || !formState.password) {
-      alert('Failed to submit your comment! please fill all requested fileds.');
+      alert('Failed to submit form! please fill all requested fileds.');
       document.location.replace('/');
     }
     event.preventDefault();
