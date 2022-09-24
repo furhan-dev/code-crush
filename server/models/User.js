@@ -4,39 +4,39 @@ const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
-  firstName: {
+  name: {
     type: String,
     required: true,
     trim: true,
   },
-  lastName: {
-    type: String,
-    required: true,
-    trim: true,
-  },
+  // lastName: {
+  //   type: String,
+  //   required: true,
+  //   trim: true,
+  // },
   email: {
     type: String,
     required: true,
     unique: true,
   },
-  age: {
-    type: Number,
-    required: true,
-  },
-  location: {
-    type: String,
-    required: true
-  },
-  work: {
-    type: String
-  },
-  looking_for: {
-    type: String,
-  }
-  ,
-  favorite_language: {
-    type: String
-  },
+  // age: {
+  //   type: Number,
+  //   required: true,
+  // },
+  // location: {
+  //   type: String,
+  //   required: true
+  // },
+  // work: {
+  //   type: String
+  // },
+  // looking_for: {
+  //   type: String,
+  // }
+  // ,
+  // favorite_language: {
+  //   type: String
+  // },
   likes: [
     {
       type: Schema.Types.ObjectId,

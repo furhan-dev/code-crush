@@ -46,9 +46,9 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { firstName, lastName, email, password, age, location }) => {
-      age = parseInt(age);
-      const user = await User.create({ firstName, lastName, email, password, age, location });
+    addUser: async (parent, { name, email, password }) => {
+      // age = parseInt(age);
+      const user = await User.create({ name, email, password });
       const token = signToken(user);
 
       return { token, user };
@@ -77,6 +77,16 @@ const resolvers = {
         return true;
       }
       return false;
+    },
+
+    addPass: async (parent, { userId }, context) => {
+      await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { passed: userId } },
+        { new: true }
+      )
+
+      return { token, user }
     },
 
     login: async (parent, { email, password }) => {

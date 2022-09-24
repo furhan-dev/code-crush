@@ -25,7 +25,7 @@ const Signup = () => {
 
   const handleFormSubmit = async (event) => {
     if(!formState.name || !formState.email || !formState.password){
-      alert('Failed to submit your comment! please fill all requested fileds.');
+      alert('Failed to submit your comment! please fill all requested fields.');
       document.location.replace('/');
   }
     event.preventDefault();
