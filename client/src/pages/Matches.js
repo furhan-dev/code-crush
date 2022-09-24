@@ -11,7 +11,7 @@ import { QUERY_SINGLE_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import UserCard from '../components/UserCard';
 
-const Profile = () => {
+const Matches = () => {
   const { userId } = useParams();
 
   // If there is no `profileId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
@@ -27,7 +27,7 @@ const Profile = () => {
 
   // Use React Router's `<Navigate />` component to redirect to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
-    return <Navigate to="/profile" />;
+    return <Navigate to="/matches" />;
   }
 
   if (loading) {
@@ -37,7 +37,7 @@ const Profile = () => {
   if (!user?.email) {
     return (
       <h4>
-        You need to be logged in to see your profile page. Use the navigation
+        You need to be logged in to see your matches page. Use the navigation
         links above to sign up or log in!
       </h4>
     );
@@ -45,19 +45,20 @@ const Profile = () => {
 
   return (
     <Container fluid>
-      <Row className="justify-content-xs-center">
-        <Col xs="12" lg={{ span: 4, offset: 4 }}>
-          <UserCard
-            firstName={user.firstName}
-            lastName={user.lastName}
-            email={user.email}
-            age={user.age}
-            location={user.location}
-          />
-        </Col>
-      </Row>
+      {!user.matches ? (
+        <h4>
+          No Matches! :(
+        </h4>
+      ) : (
+        <Row xs={1} md={2} className="g-4">
+          {Array.from({ length: user.matches.length }).map((_, idx) => (
+            <Col>
+              <UserCard />
+            </Col>
+          ))}
+        </Row>)}
     </Container>
   );
 };
 
-export default Profile;
+export default Matches;
