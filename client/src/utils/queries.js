@@ -60,4 +60,14 @@ export const SINGLE_USER = gql`
       permission
     }
   }
+  `;
+
+  export const QUERY_ALL_USER = gql`
+ {
+    users {
+      _id
+      name
+      email
+    }
+  }
 `;

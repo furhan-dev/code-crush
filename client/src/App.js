@@ -12,7 +12,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Signup from './pages/Signup2';
+import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Contact from './pages/Contact';
 import Home from "./pages/Home";
@@ -22,7 +22,7 @@ import About from './pages/About';
 import Learn from './pages/Learn.js';
 import Reviews from './pages/Reviews';
 // import Matching from "./pages/Matching";
-// import UserProfile from './pages/UserProfile'
+import UserProfile from './pages/userProfile'
 import EditProfile from './components/EditProfile'
 import Navbar from './components/navbar'
 
@@ -93,10 +93,10 @@ function App() {
             path="/matching"
             element={<Matching />}
           /> */}
-          {/* <Route
+          <Route
             path="/userprofile"
             element={<UserProfile />}
-          /> */}
+          />
           <Route
             path="/editprofile"
             element={<EditProfile />}
