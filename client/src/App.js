@@ -21,7 +21,7 @@ import Footer from "./components/Footer";
 import About from './pages/About';
 import Learn from './pages/Learn.js';
 import Reviews from './pages/Reviews';
-// import Matching from "./pages/Matching";
+import Matching from "./pages/Matching";
 import UserProfile from './pages/userProfile'
 import EditProfile from './components/EditProfile'
 import Navbar from './components/navbar'
@@ -89,10 +89,10 @@ function App() {
             path="/Reviews"
             element={<Reviews />}
           />
-          {/* <Route
+          <Route
             path="/matching"
             element={<Matching />}
-          /> */}
+          />
           <Route
             path="/userprofile"
             element={<UserProfile />}
